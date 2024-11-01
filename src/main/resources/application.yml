@@ -1,0 +1,20 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+
+  application:
+    name: springboot-datamigration-flyway
+  
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    user: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+    baseline-description: "init"
+    baseline-version: 1
